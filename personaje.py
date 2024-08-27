@@ -81,8 +81,8 @@ class Personaje:
             input(
                 f"\nCon tu nivel actual, tienes {probabilidad_ganar * 100}% "
                 "de probabilidades de perder contra el Orco.\n"
-                "\nSi ganas, ganarás 30 puntos de experiencia y el orco perderá 50. \n"
-                "Si pierdes, perderás 50 puntos de experiencia y el orco ganará 30.\n"
+                "\nSi ganas, ganarás 50 puntos de experiencia y el orco perderá 30. \n"
+                "Si pierdes, perderás 30 puntos de experiencia y el orco ganará 50.\n"
                 "\n¿Qué deseas hacer?\n"
                 "1. Atacar\n"
                 "2. Huir\n"
