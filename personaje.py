@@ -3,37 +3,54 @@ class Personaje:
     def __init__(self, nombre):
         self.nombre = nombre
         self.nivel = 1
-        self.experiencia = (
-            0 # 10
-        )
+        self.experiencia = 0
+        
 
     @property
     def estado(self):
-        return f"NOMBRE: {self.nombre} NIVEL: {self.nivel} EXP: {self.nivel}"
+        return f"NOMBRE: {self.nombre} NIVEL: {self.nivel} EXP: {self.experiencia}"
 
     @estado.setter
     def estado(self, exp):
-        tmp_exp = self.experiencia + exp
-
-        while tmp_exp >= 100:
-            self.nivel += (
-                2
-            )
-            tmp_exp -= 90
-
-        while tmp_exp < 0:
-            if self.nivel > 1:
-                tmp_exp = 100 + tmp_exp
-                self.nivel -= (
-                    2
-                )
-            else:
-                tmp_exp = (
-                    -1
-                )
+        temp_exp = self.experiencia + exp
+        if self.nivel==1 and exp<0 and (temp_exp)<0:
+            
+            self.nivel=1 
+            self.experiencia=0    
+        elif self.nivel>=1 and exp>=0 and (temp_exp)<100:
+            #self.nivel=1 
+            self.experiencia=self.experiencia + exp
+        elif self.nivel>=1 and exp>=0 and (temp_exp)>=100:
+            
+            self.nivel+=1
+            #print(temp_exp)
+            #print((temp_exp - 100 ) )
+            self.experiencia=(temp_exp - 100 ) 
+        if self.nivel==1 and exp<0 and (temp_exp)>0:
+            
+            #self.nivel=1 
+            self.experiencia=temp_exp
         
+       # tmp_exp = self.experiencia + exp
 
-        self.experiencia = tmp_exp
+        #while tmp_exp >= 100:
+        #    self.nivel += (
+        #        2
+        #    )
+        #    tmp_exp -= 90
+
+        #while tmp_exp < 0:
+        #    if self.nivel > 1:
+        #        tmp_exp = 100 + tmp_exp
+        #        self.nivel -= (
+        #            2
+        #        )
+        #    else:
+        #        tmp_exp = (
+        #            -1
+        #        )
+
+        #self.experiencia = tmp_exp
 
     def __lt__(self, other):
         return (
@@ -52,15 +69,11 @@ class Personaje:
 
     def get_probabilidad_ganar(self, other):
         if self < other:
-            return (
-                0.66
-            )
+            return 0.33
         elif self > other:
-            return (
-                0.33
-            )
-        else:
-            return 0.75
+            return 0.66
+        else: 
+            return 0.5
 
     @staticmethod
     def mostrar_dialogo_opcion(probabilidad_ganar):
@@ -71,7 +84,7 @@ class Personaje:
                 "\nSi ganas, ganarás 30 puntos de experiencia y el orco perderá 50. \n"
                 "Si pierdes, perderás 50 puntos de experiencia y el orco ganará 30.\n"
                 "\n¿Qué deseas hacer?\n"
-                "1. Huir\n"
-                "2. Atacar\n"
+                "1. Atacar\n"
+                "2. Huir\n"
             )
         )
