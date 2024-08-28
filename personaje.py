@@ -16,20 +16,28 @@ class Personaje:
         if self.nivel==1 and exp<0 and (temp_exp)<0:
             
             self.nivel=1 
-            self.experiencia=0    
+            self.experiencia=0 
+        elif self.nivel>1 and exp<0 and (temp_exp)<0:
+            
+            self.nivel-=1 
+            self.experiencia=100+ temp_exp  
+        elif self.nivel>1 and exp<0 and (temp_exp)==0:
+            self.experiencia=100+ temp_exp  
+      
         elif self.nivel>=1 and exp>=0 and (temp_exp)<100:
             #self.nivel=1 
             self.experiencia=self.experiencia + exp
         elif self.nivel>=1 and exp>=0 and (temp_exp)>=100:
-            
+           
             self.nivel+=1
             #print(temp_exp)
             #print((temp_exp - 100 ) )
             self.experiencia=(temp_exp - 100 ) 
-        if self.nivel==1 and exp<0 and (temp_exp)>0:
             
+        elif self.nivel==1 and exp<0 and (temp_exp)>0:
             #self.nivel=1 
             self.experiencia=temp_exp
+
         
        # tmp_exp = self.experiencia + exp
 
