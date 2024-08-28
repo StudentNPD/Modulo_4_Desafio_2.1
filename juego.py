@@ -14,9 +14,9 @@ print(
 )
 o = Personaje("Orco")
 probabilidad_ganar = p.get_probabilidad_ganar(
-    p
+    o #o de orcoo
 )
-
+#MALA INVOCACION
 opcion_orco = Personaje.mostrar_dialogo_opcion(probabilidad_ganar)
 
 while opcion_orco == 1:
@@ -43,6 +43,6 @@ while opcion_orco == 1:
     print(p.estado)
     print(o.estado)
 
-    #probabilidad_ganar = p.get_probabilidad_ganar(0)
+    probabilidad_ganar = p.get_probabilidad_ganar(o)
     opcion_orco = p.mostrar_dialogo_opcion(probabilidad_ganar)
 if opcion_orco!=1:print("¡Has huido! El orco ha quedado atrás.")
